@@ -24,7 +24,7 @@ function getMealRecipe (){
         })
         .then (function(result){
             console.log(result);
-            const mealID = result.meals[0].idMeal
+            const mealID = result.meals[Math.floor(Math.random() * 10)].idMeal
             console.log(mealID);
 
             var mealIDURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+mealID;
@@ -95,7 +95,14 @@ function getMealRecipe (){
     
 }
 
-searchBtn.addEventListener('click', function(){
+// easier way to link button to localstorage removal function
+// function removeSaved(){
+// localStorage.removeItem()
+
+// }
+
+searchBtn.addEventListener('click', function(event){
+    event.preventDefault();
     getMealRecipe();
 
 })
