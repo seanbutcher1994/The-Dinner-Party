@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <!-- font, css API, icon links -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Food/Cocktail App</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<link rel="stylesheet" href="assets/css/reset.min.css">
+	<link rel="stylesheet" href="assets/css/custom.css"> 
 </head>
 
-<!-- Nav Bar with Home, cocktails, meals section links -->
-<!-- Input field -->
-<!-- Submit Button -->
-<!-- Section for recipe cards to go -->
-<!-- Footer section -->
 <body>
-    
+	<nav class="navbar" role="navigation" aria-label="main navigation" class="has-shadow">
+		<div class="navbar-brand pl-6">
+		  <a class="navbar-item" href="https://bulma.io">
+			<img src="images/Dinner-Party-removebg-preview (3).png">
+		  </a>
+	  
+		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+		  </a>
+		</div>
+	  
+		<div id="navbarBasicExample" class="navbar-menu pr-6">
+		  <div class="navbar-end">
+			<a class="navbar-item heading has-text-weight-bold ">
+			  Dinners
+			</a>
+	  
+			<a class="navbar-item heading has-text-weight-bold">
+			  Cocktails
+			</a>
+
+		  </div>
+		</div>
+	  </nav>
+
+
+	<div class="container">
+		<section class="hero">
+			<div class="hero-body">
+				<div class="search-body">
+					<div class="search-p">
+						<form class="search">
+							<div class="a-field search__field">
+								<input type="text" id="get-hashtag" class="r-text-field a-field__input search__input" placeholder="Chicken, Beef, Pork...." required>
+								<button class="r-button search__button search__clear" type="reset"> <span class="search__clear-label">Clear the search form</span> </button>
+								<label class="a-field__label-wrap search__hint" for="query"> <span class="a-field__label">What ingredients do you have</span> </label>
+							</div>
+							<button class="r-button search__button search__submit" type="submit"> <span class="search__submit-label">Search</span> <i class="fas fa-search search__icon search__icon-search"></i> </button>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<section>
+		<!--API Content section-->
+	</section>
+	
+	<!-- <script></script> -->
+	<script src="https://kit.fontawesome.com/ade04dfe20.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
 </body>
 <!-- JQUERY Links -->
 <script src="./Assets/JS/cocktails.js"></script>
