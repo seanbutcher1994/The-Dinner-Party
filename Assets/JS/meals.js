@@ -14,6 +14,9 @@ const searchBtn = document.querySelector('#search-button')
     // Bonus: generate a different recipe
         // button to generate new random recipe with same ingredient
 
+
+
+
 function getMealRecipe (){
     // console.log(searchBar);
     var mealRecipeURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+searchBar.value;
@@ -38,6 +41,8 @@ function getMealRecipe (){
             // })
 
         })
+
+
         .then(function(result){
             console.log(result);
             // Name of Dish
@@ -91,6 +96,46 @@ function getMealRecipe (){
             // Method
             var method = result.meals[0].strInstructions;
             console.log(method);
+
+//create search result header and card body
+var searchResultHeaderEl = $('#searchResultHeader');
+var searchHeaderEl = $('<h1>');
+searchHeaderEl.text ('Your Dinner Party');
+searchResultHeaderEl.append(searchHeaderEl);
+
+var searchResultEl = $('#searchResult');
+var searchCard = document.createElement ('div');
+searchCard.innerHTML = `
+<div class="">
+<h2>${nameValue}
+<h2><img src = "${imageValue}">
+<ul>
+<li>${ingValue1}
+<li>${ingValue2}
+<li>${ingValue3}
+<li>${ingValue4}
+<li>${ingValue5}
+<li>${ingValue6}
+<li>${ingValue7}
+<li>${ingValue8}
+<li>${ingValue9}
+<li>${ingValue10}
+<li>${ingValue11}
+<li>${ingValue12}
+<li>${ingValue13}
+<li>${ingValue14}
+<li>${ingValue15}
+<li>${ingValue16}
+<li>${ingValue17}
+<li>${ingValue18}
+<li>${ingValue19}
+<li>${ingValue20}
+</ul>
+<p>${method}
+`;
+
+searchResultEl.append(searchCard);
+
         })
     
 }
