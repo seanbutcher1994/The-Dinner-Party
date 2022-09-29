@@ -1,6 +1,9 @@
 
 const searchBar = document.querySelector('#get-hashtag')
 const searchBtn = document.querySelector('#search-button')
+var searchResultEl = $('#searchResult');
+var searchCard = document.createElement ('div');
+var ingredientList = document.querySelector('#ingredients-list')
 
 // When the user gets to meals page
     // They can click into an input and type in an ingredient
@@ -27,7 +30,7 @@ function getMealRecipe (){
         })
         .then (function(result){
             console.log(result);
-            const mealID = result.meals[Math.floor(Math.random() * 10)].idMeal
+            const mealID = result.meals[Math.floor(Math.random() * (result.meals.length))].idMeal
             console.log(mealID);
 
             var mealIDURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+mealID;
@@ -35,6 +38,9 @@ function getMealRecipe (){
             .then(function(response){
                 return response.json();
             })
+
+            
+            
 
             // .then(function(result){
             //     console.log(result);
@@ -44,6 +50,7 @@ function getMealRecipe (){
 
 
         .then(function(result){
+        
             console.log(result);
             // Name of Dish
             var nameValue = result.meals[0].strMeal;
@@ -55,20 +62,21 @@ function getMealRecipe (){
             var food = [];
             var strMeasure = [];
             var strIngredient = [];
+
     
             for (var property in result.meals[0]) {
                 if (property.includes("strMeasure")) {
-                    if(!result.meals[0][property].includes("null")) {
-                        if (result.meals[0][property].length > 4) {
-                            strMeasure.push(result.meals[0][property]);
-                        }
-                    }
+                    
+                    
+                   strMeasure.push(result.meals[0][property]);
+                        
+                    
                 } else if (property.includes("strIngredient")) {
-                    if(!result.meals[0][property].includes("null")) {
-                        if (result.meals[0][property].length > 4) {
-                            strIngredient.push(result.meals[0][property]);
-                        }
-                    } 
+                    
+                         
+                    strIngredient.push(result.meals[0][property]);
+                        
+                    
                 }
             }
             console.log(strMeasure);
@@ -123,43 +131,21 @@ function getMealRecipe (){
             console.log(method);
 
 //create search result header and card body
-var searchResultHeaderEl = $('#searchResultHeader');
-var searchHeaderEl = $('<h1>');
-searchHeaderEl.text ('Your Dinner Party');
-searchResultHeaderEl.append(searchHeaderEl);
+// var searchResultHeaderEl = $('#searchResultHeader');
+// var searchHeaderEl = $('<h1>');
+// searchHeaderEl.text ('Your Dinner Party');
+// searchResultHeaderEl.append(searchHeaderEl);
 
-var searchResultEl = $('#searchResult');
-var searchCard = document.createElement ('div');
+
 searchCard.innerHTML = `
 <div class="box">
-$box-color black
 <h2>${nameValue}
 <div class="columns">
 <div class= "column is-4">
 <h2><img class="image is-300x300" src = "${imageValue}">
 </div>
 <div class= "column is-2">
-<ul>
-<li>${ingValue1}
-<li>${ingValue2}
-<li>${ingValue3}
-<li>${ingValue4}
-<li>${ingValue5}
-<li>${ingValue6}
-<li>${ingValue7}
-<li>${ingValue8}
-<li>${ingValue9}
-<li>${ingValue10}
-<li>${ingValue11}
-<li>${ingValue12}
-<li>${ingValue13}
-<li>${ingValue14}
-<li>${ingValue15}
-<li>${ingValue16}
-<li>${ingValue17}
-<li>${ingValue18}
-<li>${ingValue19}
-<li>${ingValue20}
+<ul id="ingredients-list">
 </ul>
 </div>
 <div class= "column is-6">
@@ -168,7 +154,18 @@ $box-color black
 </div>
 `;
 
-searchResultEl.append(searchCard);
+
+ searchResultEl.append(searchCard);
+
+ for (let i = 0; i < food.length; i ++){
+    var ingredientList = document.querySelector('#ingredients-list')
+    var foodItem = document.createElement('li');
+    foodItem.innerHTML = `
+    ${food[i]}
+    `
+    console.log(foodItem);
+    ingredientList.append(foodItem);
+}
 
         })
     
