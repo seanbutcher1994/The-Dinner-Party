@@ -1,7 +1,7 @@
 
 const searchBar = document.querySelector('#get-hashtag')
 const searchBtn = document.querySelector('#search-button')
-
+const saveBtn = document.querySelector('#saveBtn')
 
 // When the user gets to meals page
     // They can click into an input and type in an ingredient
@@ -15,7 +15,7 @@ const searchBtn = document.querySelector('#search-button')
     // Bonus: generate a different recipe
         // button to generate new random recipe with same ingredient
 
-
+var pastSearchFoodEl = $('#past-search');
 
 
 function getMealRecipe (){
@@ -124,6 +124,27 @@ function getMealRecipe (){
             var method = result.meals[0].strInstructions;
             console.log(method);
 
+//create local storage to save search history.
+
+
+    localStorage.setItem("nameValue", JSON.stringify(nameValue));
+    localStorage.setItem("imageValue", JSON.stringify(imageValue));
+    localStorage.setItem("food", JSON.stringify(food));
+    localStorage.setItem("method", JSON.stringify(method));
+
+//display search history
+            function displaySearchHistory () {
+                var searchHistory = JSON.parse(localStorage.getItem("nameValue"));
+                var pastSearchEl = document.getElementById('past-search');
+
+                pastSearchEl.innerHTML = '';
+
+                    var pastFoodBtn = document.createElement("button");
+                    pastFoodBtn.textContent = "Past Searches";
+                    pastSearchEl.appendChild(pastFoodBtn);
+            }
+displaySearchHistory ()
+
 //create search result header and card body
 // var searchResultHeaderEl = $('#searchResultHeader');
 // var searchHeaderEl = $('<h1>');
@@ -171,6 +192,9 @@ searchCard.innerHTML = `
 // localStorage.removeItem()
 
 // }
+
+
+
 
 searchBtn.addEventListener('click', function(event){
     event.preventDefault();
