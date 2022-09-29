@@ -1,7 +1,11 @@
 
 const searchBar = document.querySelector('#get-hashtag')
 const searchBtn = document.querySelector('#search-button')
-const saveBtn = document.querySelector('#saveBtn')
+
+var searchResultEl = $('#searchResult');
+var searchCard = document.createElement ('div');
+var ingredientList = document.querySelector('#ingredients-list')
+
 
 // When the user gets to meals page
     // They can click into an input and type in an ingredient
@@ -37,6 +41,9 @@ function getMealRecipe (){
                 return response.json();
             })
 
+            
+            
+
             // .then(function(result){
             //     console.log(result);
             // })
@@ -45,6 +52,7 @@ function getMealRecipe (){
 
 
         .then(function(result){
+        
             console.log(result);
             // Name of Dish
             var nameValue = result.meals[0].strMeal;
@@ -60,17 +68,17 @@ function getMealRecipe (){
     
             for (var property in result.meals[0]) {
                 if (property.includes("strMeasure")) {
-                    if(!result.meals[0][property].includes(null)) {
-                        if (result.meals[0][property].length > 0) {
-                            strMeasure.push(result.meals[0][property]);
-                        } 
-                    } 
+                    
+                    
+                   strMeasure.push(result.meals[0][property]);
+                        
+                    
                 } else if (property.includes("strIngredient")) {
-                    if(!result.meals[0][property].includes(null)) {
-                        if (result.meals[0][property].length > 0) {
-                            strIngredient.push(result.meals[0][property]);
-                        }
-                    } 
+                    
+                         
+                    strIngredient.push(result.meals[0][property]);
+                        
+                    
                 }
             }
             console.log(strMeasure);
@@ -151,8 +159,7 @@ displaySearchHistory ()
 // searchHeaderEl.text ('Your Dinner Party');
 // searchResultHeaderEl.append(searchHeaderEl);
 
-var searchResultEl = $('#searchResult');
-var searchCard = document.createElement ('div');
+
 searchCard.innerHTML = `
 <div class="box">
 <h2>${nameValue}
