@@ -4,9 +4,10 @@ const searchBtn = document.querySelector('#search-button')
 
 var searchResultEl = $('#searchResult');
 var searchCard = document.createElement ('div');
-var ingredientList = document.querySelector('#ingredients-list')
-
-
+var ingredientList = document.querySelector('#ingredients-list');
+var savedRecipes = document.querySelector('#saved-recipe');
+var savedRecipeCard = document.createElement ('div');
+var savedBtn = document.querySelector('#save-button')
 // When the user gets to meals page
     // They can click into an input and type in an ingredient
         // An event listener listening for the submit button
@@ -86,47 +87,7 @@ function getMealRecipe (){
             for(var i = 0; i < strMeasure.length; i++ ){
                 food[i] = strMeasure[i] + " " + strIngredient[i];
             }
-            console.log(food);
-            // var ingValue1 = (result.meals[0].strMeasure1) + " " + (result.meals[0].strIngredient1)
-            // var ingValue2 = (result.meals[0].strMeasure2) + " " + (result.meals[0].strIngredient2)
-            // var ingValue3 = (result.meals[0].strMeasure3) + " " + (result.meals[0].strIngredient3)
-            // var ingValue4 = (result.meals[0].strMeasure4) + " " + (result.meals[0].strIngredient4)
-            // var ingValue5 = (result.meals[0].strMeasure5) + " " + (result.meals[0].strIngredient5)
-            // var ingValue6 = (result.meals[0].strMeasure6) + " " + (result.meals[0].strIngredient6)
-            // var ingValue7 = (result.meals[0].strMeasure7) + " " + (result.meals[0].strIngredient7)
-            // var ingValue8 = (result.meals[0].strMeasure8) + " " + (result.meals[0].strIngredient8)
-            // var ingValue9 = (result.meals[0].strMeasure9) + " " + (result.meals[0].strIngredient9)
-            // var ingValue10 = (result.meals[0].strMeasure10) + " " + (result.meals[0].strIngredient10)
-            // var ingValue11 = (result.meals[0].strMeasure11) + " " + (result.meals[0].strIngredient11)
-            // var ingValue12 = (result.meals[0].strMeasure12) + " " + (result.meals[0].strIngredient12)
-            // var ingValue13 = (result.meals[0].strMeasure13) + " " + (result.meals[0].strIngredient13)
-            // var ingValue14 = (result.meals[0].strMeasure14) + " " + (result.meals[0].strIngredient14)
-            // var ingValue15 = (result.meals[0].strMeasure15) + " " + (result.meals[0].strIngredient15)
-            // var ingValue16 = (result.meals[0].strMeasure16) + " " + (result.meals[0].strIngredient16)
-            // var ingValue17 = (result.meals[0].strMeasure17) + " " + (result.meals[0].strIngredient17)
-            // var ingValue18 = (result.meals[0].strMeasure18) + " " + (result.meals[0].strIngredient18)
-            // var ingValue19 = (result.meals[0].strMeasure19) + " " + (result.meals[0].strIngredient19)
-            // var ingValue20 = (result.meals[0].strMeasure20) + " " + (result.meals[0].strIngredient20)
-            // console.log(ingValue1);
-            // console.log(ingValue2);
-            // console.log(ingValue3);
-            // console.log(ingValue4);
-            // console.log(ingValue5);
-            // console.log(ingValue6);
-            // console.log(ingValue7);
-            // console.log(ingValue8);
-            // console.log(ingValue9);
-            // console.log(ingValue10);
-            // console.log(ingValue11);
-            // console.log(ingValue12);
-            // console.log(ingValue13);
-            // console.log(ingValue14);
-            // console.log(ingValue15);
-            // console.log(ingValue16);
-            // console.log(ingValue17);
-            // console.log(ingValue18);
-            // console.log(ingValue19);
-             console.log(food);
+           
           
             // Method
             var method = result.meals[0].strInstructions;
@@ -140,18 +101,50 @@ function getMealRecipe (){
     localStorage.setItem("food", JSON.stringify(food));
     localStorage.setItem("method", JSON.stringify(method));
 
+   function displaySearchHistory () {
+    var savedName = JSON.parse(localStorage.getItem("nameValue"));
+    console.log(savedName);
+    var savedImage = JSON.parse(localStorage.getItem("imageValue"));
+    var savedMethod = JSON.parse(localStorage.getItem("method"));
+    var savedIngredients = JSON.parse(localStorage.getItem("food"));
+    console.log(savedIngredients);
+    savedRecipeCard.innerHTML = `
+    <div class="box">
+    <h2>${savedName}
+    <div class="columns">
+    <div class= "column is-4">
+    <h2><img class="image is-300x300" src = "${savedImage}">
+    </div>
+    <div class= "column is-2">
+    <ul id="saved-ingredients-list">
+    </ul>
+    </div>
+    <div class= "column is-6">
+    <p>${savedMethod}
+    </div>
+    </div>
+    `
+    savedRecipes.append(savedRecipeCard);
+
+    for (let i = 0; i < savedIngredients.length; i ++){
+        var savedIngredientList = document.querySelector('#saved-ingredients-list')
+        var SavedFoodItem = document.createElement('li');
+        SavedFoodItem.innerHTML = `
+        ${savedIngredients[i]}
+        `
+        savedIngredientList.append(SavedFoodItem);
+    }
+
+}
+savedBtn.addEventListener('click', function(){
+    displaySearchHistory();
+
+})
+
+
+
 //display search history
-            function displaySearchHistory () {
-                var searchHistory = JSON.parse(localStorage.getItem("nameValue"));
-                var pastSearchEl = document.getElementById('past-search');
 
-                pastSearchEl.innerHTML = '';
-
-                    var pastFoodBtn = document.createElement("button");
-                    pastFoodBtn.textContent = "Past Searches";
-                    pastSearchEl.appendChild(pastFoodBtn);
-            }
-displaySearchHistory ()
 
 //create search result header and card body
 // var searchResultHeaderEl = $('#searchResultHeader');
@@ -208,4 +201,6 @@ searchBtn.addEventListener('click', function(event){
     getMealRecipe();
 
 })
+
+
 
