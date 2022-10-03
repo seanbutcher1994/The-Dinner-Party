@@ -1,4 +1,13 @@
+(function() {
+    var burger = document.querySelector('.navbar-burger');
+    var nav = document.querySelector('#'+burger.dataset.target);
 
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('is-active');
+      nav.classList.toggle('is-active');
+    });
+  })();
+  
 const searchBar = document.querySelector('#get-hashtag')
 const searchBtn = document.querySelector('#search-button')
 
@@ -114,24 +123,24 @@ function storePreviousSearches(){
 }
 storePreviousSearches();
 
-function displayPreviousSearches(){
-    savedRecipes.textContent = "";
+// function displayPreviousSearches(){
+//     savedRecipes.textContent = "";
 
-    for (let i = recipeList.length - 1; i >= 0; i--){
-        var btn = document.createElement("button");
-        btn.setAttribute("type", "button");
-        btn.classList.add("row", "history-btn");
-        btn.setAttribute("id", "previousRecipeBtn");
-        btn.setAttribute("data-search", recipeList[i]);
-        btn.textContent = recipeList[i].name;
+//     for (let i = recipeList.length - 1; i >= 0; i--){
+//         var btn = document.createElement("button");
+//         btn.setAttribute("type", "button");
+//         btn.classList.add("row", "history-btn");
+//         btn.setAttribute("id", "previousRecipeBtn");
+//         btn.setAttribute("data-search", recipeList[i]);
+//         btn.textContent = recipeList[i].name;
 
-        savedRecipes.append(btn);
-    }
-    console.log(btn.textContent);
+//         savedRecipes.append(btn);
+//     }
+//     console.log(btn.textContent);
 
 
-}
-displayPreviousSearches();
+// }
+// displayPreviousSearches();
 
 $(function(){
     $(".history-btn").click(function(){

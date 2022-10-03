@@ -1,20 +1,9 @@
-const container = document.querySelector(".container");
-const left = document.querySelector(".left");
-const right = document.querySelector(".right");
+(function() {
+    var burger = document.querySelector('.navbar-burger');
+    var nav = document.querySelector('#'+burger.dataset.target);
 
-
-left.addEventListener("mouseenter", () =>
-    container.classList.add("hover-left")
-);
-
-left.addEventListener("mouseleave", () =>
-    container.classList.remove("hover-left")
-);
-
-right.addEventListener("mouseenter", () =>
-    container.classList.add("hover-right")
-);
-
-right.addEventListener("mouseleave", () =>
-    container.classList.remove("hover-right")
-);
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('is-active');
+      nav.classList.toggle('is-active');
+    });
+  })();

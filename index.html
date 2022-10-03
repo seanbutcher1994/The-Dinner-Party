@@ -1,57 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="Assets/CSS/home.css">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
+	<link rel="stylesheet" href="Assets/CSS/home.css">
+  </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation" class="has-shadow">
-		<div class="navbar-brand pl-6">
-		  <a class="navbar-item" href="https://bulma.io">
-			<!-- <img src="images/Dinner-Party-removebg-preview (3).png"> -->
-		  </a>
-	  
-		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-			<span aria-hidden="true"></span>
-			<span aria-hidden="true"></span>
-			<span aria-hidden="true"></span>
-		  </a>
+    <section class="hero is-medium">
+		<!-- Hero head: will stick at the top -->
+		<div class="hero-head">
+		  <nav class="navbar">
+			<div class="container">
+			  <div class="navbar-brand">
+				<a class="navbar-item">
+					<p class="title" style="color: #5f27cd; font-family: 'Times New Roman', Times, serif;">
+						DINNER PARTY
+					</p>
+				</a>
+				<span class="navbar-burger" data-target="navbarMenuHeroA">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</span>
+			  </div>
+			  <div id="navbarMenuHeroA" class="navbar-menu">
+				<div class="navbar-end" style="font-family: 'Times New Roman', Times, serif;">
+				  <a href="./index.html" class="navbar-item is-active" style="color: #5f27cd;">
+					Home
+				  </a>
+				  <a href="./meals.html" class="navbar-item" style="color: #5f27cd;">
+					Dinners
+				  </a>
+				  <a href="./cocktails.html" class="navbar-item" style="color: #5f27cd;">
+					Cocktails
+				  </a>
+				</div>
+			  </div>
+			</div>
+		  </nav>
 		</div>
 	  
-		<div id="navbarBasicExample" class="navbar-menu pr-6">
-		  <div class="navbar-end">
-			<a class="navbar-item heading has-text-weight-bold ">
-			  Dinners
-			</a>
-	  
-			<a class="navbar-item heading has-text-weight-bold">
-			  Cocktails
-			</a>
-
+		<!-- Hero content: will be in the middle -->
+		<div class="hero-body">
+		  <div class="container has-text-centered">
+			<img src="./Assets/IMG/Dinner-Party-Logo.png" alt="logo" style="max-width: 500px; max-height: 300px;">
 		  </div>
 		</div>
-	</nav>
+	</section>
     
-    <div class="container">
-        <div class="split left">
-            <h1>Dinner</h1>
-            <a href="#" class="btn">Get Recipe</a>
-        </div>
-        <div class="split right">
-            <h1>Cocktails</h1>
-            <a href="#" class="btn">Get Recipe</a>
-        </div>
-    </div>
+	<div class="columns">
+		<div class="column">
+		  <div class="box has-text-centered" style="height: 500px; background-color: #5f27cd;">
+			<p class="title is-3 is-center" style="color: aliceblue;">Dinner</p>
+			<p class="subtitle" style="color: aliceblue;"> Dont know what to cook for your special dinner? Put in the main ingredient that you would like and randomly generate a recipe to cook to impress all your friends.</p>
+			<a href="./meals.html" id="btn-left" class="button is-primary is-outlined" style="width: 300px; color: aliceblue; border-color: aliceblue;">Get Recipe</a>
+		  </div>
+		</div>
+		<div class="column">
+		  <div class="box has-text-centered" style="height: 500px;">
+			<p class="title is-3" style="color: #5f27cd;">Cocktails</p>
+			<p class="subtitle" style="color: #5f27cd;">A dinner party isn't the same without a delicious beverage, click the get recipe below and put in what spirit you would like to drink and randomly generate a tasty cocktail to serve your guests..</p>
+			<a href="./cocktails.html" id="btn-right" class="button is-link is-outlined is-centered" style="width: 300px; color: #5f27cd; border-color: #5f27cd;">Get Recipe</a>
+		  </div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="content has-text-centered">
+		  <p>
+			<strong>Dinner Party</strong> by Sean Butcher, Wenyan Ge and Tyson Jackson
+			<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+			has used TheMealDB and TheCocktailDB</a>.
+		  </p>
+		</div>
+	</footer>
+	
+
 </body>
 
-<!-- Nav Bar with Home, cocktails, meals section links -->
-<!-- About section for each search function with linked button to page -->
-<!-- Footer section -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/ade04dfe20.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
 <script src="./Assets/JS/Home.js"></script>
 </html>

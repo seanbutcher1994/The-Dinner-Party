@@ -12,32 +12,47 @@
 </head>
 
 <body>
-	<nav class="navbar" role="navigation" aria-label="main navigation" class="has-shadow">
-		<div class="navbar-brand pl-6">
-		  <a class="navbar-item" href="https://bulma.io">
-			<!-- <img src="images/Dinner-Party-removebg-preview (3).png"> -->
-		  </a>
-	  
-		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-			<span aria-hidden="true"></span>
-			<span aria-hidden="true"></span>
-			<span aria-hidden="true"></span>
-		  </a>
+	<section class="hero is-medium">
+		<!-- Hero head: will stick at the top -->
+		<div class="hero-head">
+		  <nav class="navbar">
+			<div class="container">
+			  <div class="navbar-brand">
+				<a class="navbar-item">
+					<p class="title" style="color: #5f27cd; font-family: 'Times New Roman', Times, serif;">
+						DINNER PARTY
+					</p>
+				</a>
+				<span class="navbar-burger" data-target="navbarMenuHeroA">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</span>
+			  </div>
+			  <div id="navbarMenuHeroA" class="navbar-menu">
+				<div class="navbar-end" style="font-family: 'Times New Roman', Times, serif;">
+				  <a href="./index.html" class="navbar-item is-active" style="color: #5f27cd;">
+					Home
+				  </a>
+				  <a href="./meals.html" class="navbar-item" style="color: #5f27cd;">
+					Dinners
+				  </a>
+				  <a href="./cocktails.html" class="navbar-item" style="color: #5f27cd;">
+					Cocktails
+				  </a>
+				</div>
+			  </div>
+			</div>
+		  </nav>
 		</div>
 	  
-		<div id="navbarBasicExample" class="navbar-menu pr-6">
-		  <div class="navbar-end">
-			<a class="navbar-item heading has-text-weight-bold ">
-			  Dinners
-			</a>
-	  
-			<a class="navbar-item heading has-text-weight-bold">
-			  Cocktails
-			</a>
-
+		<!-- Hero content: will be in the middle -->
+		<div class="hero-body">
+		  <div class="container has-text-centered">
+			<img src="./Assets/IMG/Dinner-Party-Logo.png" alt="logo" style="max-width: 500px; max-height: 300px;">
 		  </div>
 		</div>
-	  </nav>
+	</section>
 
 
 	  <div class="container">
@@ -48,8 +63,8 @@
 						<form class="search">
 							<!-- <button id="clear-button class="r-button search__button search__clear" type="reset"> <span class="search__clear-label" onclick="removeSaved">Clear the search form</span> </button> -->
 							<div class="a-field search__field">
-								<input type="text" id="get-hashtag" class="r-text-field a-field__input search__input" placeholder="Chicken, Beef, Pork...." required> 
-								<label class="a-field__label-wrap search__hint" for="query"> <span class="a-field__label">What ingredients do you have</span> </label>
+								<input type="text" id="get-hashtag" class="r-text-field a-field__input search__input" placeholder="Vodka, Gin, Whiskey...." required> 
+								<label class="a-field__label-wrap search__hint" for="query"> <span class="a-field__label">What spirits do you have</span> </label>
 							</div>
 							<button id="search-button" class="r-button search__button search__submit"> <span class="search__submit-label">Search</span> <i class="fas fa-search search__icon search__icon-search"></i> </button>
 						</form>
