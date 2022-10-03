@@ -194,7 +194,7 @@ $(function(){
 
             searchCard.innerHTML = `
             <div class="box">
-            <h2>${nameValue}
+            <h2 class="border:3px solid black;">${nameValue}
             <div class="columns">
             <div class= "column is-4">
             <h2><img class="image is-300x300" src = "${imageValue}">
