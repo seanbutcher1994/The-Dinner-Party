@@ -14,18 +14,12 @@ a {
 	color: #5f27cd;
 }
 
-.navbar {
-	height: 80px;
-	z-index: 1;
+#btn-left:hover {
+    background-color: #7542db;
 }
 
-.navbar, .navbar-item, .navbar-burger, .control {
-	height: 80px;
-	z-index: 1;
-}
-
-.navbar-link.is-active, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:hover, .navbar-end a.navbar-item.is-active {
-	background: none !important;
+#btn-right:hover {
+    background-color: #cbb9f0;
 }
 
 .is-white {
@@ -80,7 +74,7 @@ header {
 
 
 .search-body {
-	margin-top: 25vh;
+	margin-top: 20px;
 	display: flex;
 }
 
@@ -314,8 +308,6 @@ header {
 
 
 /* search form end here */
-
-
 
 @media (min-width: 641px) {
   
