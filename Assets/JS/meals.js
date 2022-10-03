@@ -30,7 +30,6 @@ var savedBtn = document.querySelector('#save-button')
         // button to generate new random recipe with same ingredient
 
 var pastSearchFoodEl = $('#past-search');
-let recipeList = [];
 
 
 function getMealRecipe (){
@@ -105,117 +104,62 @@ function getMealRecipe (){
 
 //create local storage to save search history.
 
-function storePreviousSearches(){
-    var storedRecipes = [];
-    
-    if(localStorage.getItem('recipeList')){
-       
-       storedRecipes = JSON.parse(localStorage.getItem('recipeList'))
-        storedRecipes.push({name: nameValue})
-        console.log(storedRecipes);
-        
-        recipeList = storedRecipes;
-        
-        localStorage.setItem('recipeList', JSON.stringify(recipeList));
-     } 
-    console.log(storedRecipes);
-    console.log(recipeList);
+
+localStorage.setItem("nameValue", JSON.stringify(nameValue));
+    localStorage.setItem("imageValue", JSON.stringify(imageValue));
+    localStorage.setItem("food", JSON.stringify(food));
+    localStorage.setItem("method", JSON.stringify(method));
+
+   function displaySearchHistory () {
+    var savedName = JSON.parse(localStorage.getItem("nameValue"));
+    console.log(savedName);
+    var savedImage = JSON.parse(localStorage.getItem("imageValue"));
+    var savedMethod = JSON.parse(localStorage.getItem("method"));
+    var savedIngredients = JSON.parse(localStorage.getItem("food"));
+    console.log(savedIngredients);
+    savedRecipeCard.innerHTML = `
+    <div class="box">
+    <h2>${savedName}
+    <div class="columns">
+    <div class= "column is-4">
+    <h2><img class="image is-300x300" src = "${savedImage}">
+    </div>
+    <div class= "column is-2">
+    <ul id="saved-ingredients-list">
+    </ul>
+    </div>
+    <div class= "column is-6">
+    <p>${savedMethod}
+    </div>
+    </div>
+    `
+    savedRecipes.append(savedRecipeCard);
+
+    for (let i = 0; i < savedIngredients.length; i ++){
+        var savedIngredientList = document.querySelector('#saved-ingredients-list')
+        var SavedFoodItem = document.createElement('li');
+        SavedFoodItem.innerHTML = `
+        ${savedIngredients[i]}
+        `
+        savedIngredientList.append(SavedFoodlItem);
+    }
+
 }
-storePreviousSearches();
+savedBtn.addEventListener('click', function(){
+    displaySearchHistory();
 
-// function displayPreviousSearches(){
-//     savedRecipes.textContent = "";
-
-//     for (let i = recipeList.length - 1; i >= 0; i--){
-//         var btn = document.createElement("button");
-//         btn.setAttribute("type", "button");
-//         btn.classList.add("row", "history-btn");
-//         btn.setAttribute("id", "previousRecipeBtn");
-//         btn.setAttribute("data-search", recipeList[i]);
-//         btn.textContent = recipeList[i].name;
-
-//         savedRecipes.append(btn);
-//     }
-//     console.log(btn.textContent);
-
-
-// }
-// displayPreviousSearches();
-
-$(function(){
-    $(".history-btn").click(function(){
-        var previouSearch = $(this).html();
-        var previousSearchURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s='+previouSearch;
-        console.log(previouSearch);
-        return fetch(previousSearchURL)
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(result){
-            console.log(result);
-            console.log(result);
-            // Name of Dish
-            var nameValue = result.meals[0].strMeal;
-            console.log(nameValue);
-            // Image of Dish
-            var imageValue = result.meals[0].strMealThumb
-            console.log(imageValue);
-            // List of Ingredients and measurements
-            var food = [];
-            var strMeasure = [];
-            var strIngredient = [];
-
-    
-            for (var property in result.meals[0]) {
-                if (property.includes("strMeasure")) {
-                    
-                    
-                   strMeasure.push(result.meals[0][property]);
-                        
-                    
-                } else if (property.includes("strIngredient")) {
-                    
-                         
-                    strIngredient.push(result.meals[0][property]);
-                        
-                    
-                }
-            }
-            console.log(strMeasure);
-    
-            for(var i = 0; i < strMeasure.length; i++ ){
-                food[i] = strMeasure[i] + " " + strIngredient[i];
-            }
-           
-          
-            // Method
-            var method = result.meals[0].strInstructions;
-            console.log(method);
-
-            searchCard.innerHTML = `
-            <div class="box">
-            <h2 class="border:3px solid black;">${nameValue}
-            <div class="columns">
-            <div class= "column is-4">
-            <h2><img class="image is-300x300" src = "${imageValue}">
-            </div>
-            <div class= "column is-2">
-            <ul id="ingredients-list">
-            </ul>
-            </div>
-            <div class= "column is-6">
-            <p>${method}
-            </div>
-            </div>
-            `;
-        
-        
-         searchResultEl.append(searchCard);
-        
-        })
-    })
 })
 
+
+
+//display search history
+
+
+//create search result header and card body
+// var searchResultHeaderEl = $('#searchResultHeader');
+// var searchHeaderEl = $('<h1>');
+// searchHeaderEl.text ('Your Dinner Party');
+// searchResultHeaderEl.append(searchHeaderEl);
 
 
     searchCard.innerHTML = `
